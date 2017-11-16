@@ -14,3 +14,32 @@ app.listen(PORT, function(){
   console.log("App listening on port: " + PORT);
 
 });
+
+var tables = [];
+
+
+// Basic route that sends the user first to the AJAX Page
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/reservation", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+app.get("/view", function(req, res) {
+  res.sendFile(path.join(__dirname, "tableviews.html"));
+});
+
+app.post("/api/new", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var newTable = req.body;
+  newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newTable);
+
+  tables.push(newTable);
+
+  res.json(newTable);
+});
