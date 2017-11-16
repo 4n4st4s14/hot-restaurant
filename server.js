@@ -19,7 +19,7 @@ var tables = [];
 
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
+app.post("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
@@ -35,7 +35,7 @@ app.post("/api/new", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   var newTable = req.body;
-  newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+  newTable.routeName = newTable.customerName.replace(/\s+/g, "").toLowerCase();
 
   console.log(newTable);
 
