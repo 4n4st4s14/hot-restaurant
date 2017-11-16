@@ -66,10 +66,10 @@ Waiting List
       wellSection.attr("id", "character-well-" + i);
       $("#well-section").append(wellSection);
 
-      $("#current-reservations").append("<h2>" + data[i].customerName + "</h2>");
-      $("#current-reservations").append("<h3>Role: " + data[i].customerEmail + "</h4>");
-      $("#current-reservations").append("<h3>Age: " + data[i].customerPhone + "</h4>");
-      $("#current-reservations").append("<h3>Force Points: " + data[i].customerId + "</h4>");
+      $("#current-reservations").append("<h2>Name: " + data[i].customerName + "</h2>");
+      $("#current-reservations").append("<h3>Email: " + data[i].customerEmail + "</h4>");
+      $("#current-reservations").append("<h3>Phone: " + data[i].customerPhone + "</h4>");
+      $("#current-reservations").append("<h3>Id: " + data[i].customerId + "</h4>");
     }
   });
   </script>
