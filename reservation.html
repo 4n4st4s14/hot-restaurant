@@ -76,17 +76,13 @@
 
        event.preventDefault();
       console.log(newReservation);
-      // return false;
-      //
-      // var currentURL = window.location.origin;
-      //
-      // $.post(currentURL + "/api/tables", newReservation, function(data){
-      //
-      // })
+
 
       $.post("/api/new", newReservation)
     .done(function(data) {
       console.log(data);
+
+
       alert("Adding Table...");
     });
     });
