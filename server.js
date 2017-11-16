@@ -15,7 +15,14 @@ app.listen(PORT, function(){
 
 });
 
-var tables = [];
+var tables = [
+  {
+    customerName: 'test',
+    customerPhone: 'test',
+    customerEmail: 'test',
+    customerId: 'test',
+  }
+];
 
 app.get("/api/:tables?", function(req, res) {
   var chosen = req.params.tables;
@@ -36,7 +43,7 @@ app.get("/api/:tables?", function(req, res) {
 
 
 // Basic route that sends the user first to the AJAX Page
-app.post("/", function(req, res) {
+app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 

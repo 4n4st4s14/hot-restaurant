@@ -5,6 +5,7 @@
   <meta charset="utf-8">
 
   <title>TablesPage</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -41,8 +42,25 @@
         </div>
 
 
+
+
   <script type="text/javascript">
 
+  $.get("/api", function(data) {
+    console.log(data);
+    for (var i = 0; i < data.length; i++) {
+      var wellSection = $("<div>");
+      wellSection.addClass("well");
+      wellSection.attr("id", "character-well-" + i);
+      $("#well-section").append(wellSection);
+
+      $("#tableSection").append("<h2>" + data[i].customerName + "</h2>");
+      $("#tableSection").append("<h3>Role: " + data[i].customerEmail + "</h4>");
+      $("#tableSection").append("<h3>Age: " + data[i].customerPhone + "</h4>");
+      $("#tableSection").append("<h3>Force Points: " + data[i].customerId + "</h4>");
+    }
+  });
+  </script>
 
   </script>
 </body>
