@@ -6,8 +6,9 @@
 
   <title>TablesPage</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,7 @@
   <div class="card-header">
     Current Reservations
   </div>
-  <div class="card-body">
+  <div class="card-body" id='current'>
     <blockquote class="blockquote mb-0" id="current-reservations">
     </blockquote>
   </div>
@@ -56,8 +57,21 @@ Waiting List
 </div>
 
 
+  <script>
+  $.get("/api", function(data) {
+    console.log(data);
+    for (var i = 0; i < data.length; i++) {
+      var wellSection = $("<div>");
+      wellSection.addClass("well");
+      wellSection.attr("id", "character-well-" + i);
+      $("#well-section").append(wellSection);
 
-
-  <script src="js/scripts.js"></script>
+      $("#current-reservations").append("<h2>" + data[i].customerName + "</h2>");
+      $("#current-reservations").append("<h3>Role: " + data[i].customerEmail + "</h4>");
+      $("#current-reservations").append("<h3>Age: " + data[i].customerPhone + "</h4>");
+      $("#current-reservations").append("<h3>Force Points: " + data[i].customerId + "</h4>");
+    }
+  });
+  </script>
 </body>
 </html>
