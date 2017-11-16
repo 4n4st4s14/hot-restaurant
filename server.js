@@ -17,6 +17,23 @@ app.listen(PORT, function(){
 
 var tables = [];
 
+app.get("/api/:tables?", function(req, res) {
+  var chosen = req.params.tables;
+
+  if (chosen) {
+    console.log(chosen);
+
+    for (var i = 0; i < characters.length; i++) {
+      if (chosen === tables[i].routeName) {
+        return res.json(tables[i]);
+      }
+    }
+
+    return res.json(false);
+  }
+  return res.json(tables);
+});
+
 
 // Basic route that sends the user first to the AJAX Page
 app.post("/", function(req, res) {
